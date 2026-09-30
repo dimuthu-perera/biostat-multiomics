@@ -1,1 +1,2 @@
 correlation_tool/*.py text eol=lf
+tests/**/*.csv text eol=lf
