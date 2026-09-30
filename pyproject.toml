@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biostat-research-tool"
+version = "1.0.0"
+authors = [
+    { name = "Dimuthu Perera", email = "dimuthu_edu@yahoo.com" }
+]
+description = "Local-first reproducible biostatistics research platform with validated multi-omics correlation"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+license = "MIT"
+dependencies = [
+  "numpy>=2.3.5,<3",
+  "pandas>=2.2.3,<3",
+  "scipy>=1.17.0,<2",
+  "gradio>=6.5.1,<7",
+  "openpyxl>=3.1.5,<4",
+  "matplotlib>=3.10.8,<4",
+]
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6.0.2,<7"]
+dev = ["pytest>=9.0.2,<10"]
+
+[project.scripts]
+biostat = "biostat_tool.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/dimuthu-perera/biostat-multiomics"
+Repository = "https://github.com/dimuthu-perera/biostat-multiomics"
+Issues = "https://github.com/dimuthu-perera/biostat-multiomics/issues"
+
+[tool.setuptools.packages.find]
+include = ["correlation_tool*", "biostat_tool*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.setuptools.package-data]
+"biostat_tool" = ["schemas/*.json", "example_data/*.csv", "example_data/*.json", "example_data/*.md", "example_data/guardrails/*.csv", "docs/*.md"]

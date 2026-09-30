@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:biostat-research-tool:analysis-spec:1.0",
+  "title": "Biostat Research Tool AnalysisSpec v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "analysis",
+    "inputs",
+    "study_design",
+    "correlation",
+    "multiple_testing"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "method"
+      ],
+      "properties": {
+        "type": {
+          "const": "cross_omics_correlation"
+        },
+        "method": {
+          "enum": [
+            "pearson",
+            "spearman"
+          ]
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_a",
+        "dataset_b"
+      ],
+      "properties": {
+        "dataset_a": {
+          "$ref": "#/$defs/dataset"
+        },
+        "dataset_b": {
+          "$ref": "#/$defs/dataset"
+        }
+      }
+    },
+    "study_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observation_structure"
+      ],
+      "properties": {
+        "observation_structure": {
+          "enum": [
+            "unknown",
+            "independent",
+            "dependent_or_clustered"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "correlation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minimum_pairwise_n": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "spearman_permutations": {
+          "type": "integer",
+          "minimum": 99,
+          "maximum": 100000
+        },
+        "random_seed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "multiple_testing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "family"
+      ],
+      "properties": {
+        "method": {
+          "const": "benjamini_hochberg"
+        },
+        "family": {
+          "const": "all_eligible_cross_dataset_pairs"
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "inspected_run_fingerprint": {
+          "type": "string",
+          "pattern": "^$|^[0-9a-fA-F]{64}$"
+        },
+        "acknowledged_warning_issue_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$)).+$",
+          "description": "Portable relative POSIX path; absolute paths and dot segments are not allowed."
+        }
+      }
+    }
+  },
+  "$defs": {
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "orientation",
+        "data_type",
+        "preprocessing"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$)).+$",
+          "description": "Portable relative POSIX path; absolute machine paths belong only in runtime overrides."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        },
+        "orientation": {
+          "enum": [
+            "samples_rows",
+            "samples_columns"
+          ]
+        },
+        "data_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preprocessing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preprocessing_details": {
+          "type": "string"
+        },
+        "missing_tokens": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

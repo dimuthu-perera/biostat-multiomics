@@ -1,0 +1,187 @@
+{
+  "examples": {
+    "16s_generic": {
+      "a": {
+        "data_type": "16s",
+        "details": "Synthetic strictly positive composition; no zero replacement required; CLR uses all 10 retained ASVs as the geometric-mean reference set.",
+        "file": "16s_clr.csv",
+        "preprocessing": "clr"
+      },
+      "b": {
+        "data_type": "generic",
+        "details": "Synthetic continuous biomarker measurements.",
+        "file": "generic_numeric.csv",
+        "preprocessing": "declared_numeric"
+      },
+      "description": "Synthetic 16S CLR coordinates paired with a generic quantitative biomarker panel.",
+      "design": "independent",
+      "label": "Cross-domain: 16S CLR \u00d7 Generic biomarkers",
+      "method": "spearman"
+    },
+    "metabolomics_metabolomics": {
+      "a": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "The same synthetic quantitative metabolomics panel loaded on both sides to demonstrate same-domain feature-to-feature correlation.",
+      "design": "independent",
+      "label": "Same-domain: Metabolomics \u00d7 Metabolomics",
+      "method": "spearman"
+    },
+    "metabolomics_metagenomics": {
+      "a": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "metagenomics",
+        "details": "Synthetic strictly positive composition; no zero replacement required; CLR uses all 12 retained species as the geometric-mean reference set.",
+        "file": "metagenomics_clr.csv",
+        "preprocessing": "clr"
+      },
+      "description": "Processed metabolomics paired with synthetic CLR coordinates derived from strictly positive compositions.",
+      "design": "independent",
+      "label": "Cross-omics: Metabolomics \u00d7 Metagenomics (CLR)",
+      "method": "spearman"
+    },
+    "metabolomics_proteomics": {
+      "a": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "proteomics",
+        "details": "Synthetic processed quantitative protein abundances.",
+        "file": "proteomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "Processed quantitative metabolomics and proteomics with shared latent synthetic signals.",
+      "design": "independent",
+      "label": "Cross-omics: Metabolomics \u00d7 Proteomics",
+      "method": "pearson"
+    },
+    "metabolomics_rnaseq": {
+      "a": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "rna_seq",
+        "details": "Synthetic continuous VST-like expression values; not raw counts.",
+        "file": "rnaseq_vst.csv",
+        "preprocessing": "vst"
+      },
+      "description": "Processed quantitative metabolomics paired with transformed RNA-seq expression; includes planted positive and negative cross-omics associations.",
+      "design": "independent",
+      "label": "Cross-omics: Metabolomics \u00d7 RNA-seq (VST)",
+      "method": "spearman"
+    },
+    "microbiome_relative_blocked": {
+      "a": {
+        "data_type": "metagenomics",
+        "details": "Synthetic relative-abundance composition; intentionally blocked.",
+        "file": "guardrails/metagenomics_relative_abundance_BLOCKED.csv",
+        "preprocessing": "relative_abundance"
+      },
+      "b": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "Demonstrates the compositional-data guardrail for relative abundance input.",
+      "design": "independent",
+      "label": "Guardrail: metagenomics relative abundance (BLOCKED)",
+      "method": "spearman"
+    },
+    "pearson_spearman_teaching": {
+      "a": {
+        "data_type": "generic",
+        "details": "Synthetic quantitative teaching drivers with deliberately different scatter structures.",
+        "file": "teaching_correlation_a.csv",
+        "preprocessing": "declared_numeric"
+      },
+      "b": {
+        "data_type": "generic",
+        "details": "Synthetic paired teaching outcomes for Pearson/Spearman comparison.",
+        "file": "teaching_correlation_b.csv",
+        "preprocessing": "declared_numeric"
+      },
+      "description": "Visually distinct synthetic patterns: positive linear, negative linear, monotonic nonlinear, outlier-sensitive, null, missingness, and constant-feature cases.",
+      "design": "independent",
+      "label": "Teaching: Pearson vs Spearman",
+      "method": "spearman"
+    },
+    "proteomics_proteomics": {
+      "a": {
+        "data_type": "proteomics",
+        "details": "Synthetic processed quantitative protein abundances.",
+        "file": "proteomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "proteomics",
+        "details": "Synthetic processed quantitative protein abundances.",
+        "file": "proteomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "The same synthetic quantitative proteomics panel loaded on both sides to demonstrate same-domain protein-to-protein correlation.",
+      "design": "independent",
+      "label": "Same-domain: Proteomics \u00d7 Proteomics",
+      "method": "pearson"
+    },
+    "rnaseq_raw_blocked": {
+      "a": {
+        "data_type": "rna_seq",
+        "details": "Synthetic raw integer counts; intentionally blocked.",
+        "file": "guardrails/rnaseq_raw_counts_BLOCKED.csv",
+        "preprocessing": "raw_counts"
+      },
+      "b": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "Demonstrates the raw-count guardrail. Dataset A is intentionally unsuitable for ordinary Pearson/Spearman correlation.",
+      "design": "independent",
+      "label": "Guardrail: raw RNA-seq counts (BLOCKED)",
+      "method": "spearman"
+    },
+    "rnaseq_rnaseq": {
+      "a": {
+        "data_type": "rna_seq",
+        "details": "Synthetic continuous VST-like expression values; not raw counts.",
+        "file": "rnaseq_vst.csv",
+        "preprocessing": "vst"
+      },
+      "b": {
+        "data_type": "rna_seq",
+        "details": "Synthetic continuous VST-like expression values; not raw counts.",
+        "file": "rnaseq_vst.csv",
+        "preprocessing": "vst"
+      },
+      "description": "The same synthetic VST-like RNA-seq panel loaded on both sides to demonstrate same-domain gene-to-gene correlation.",
+      "design": "independent",
+      "label": "Same-domain: RNA-seq \u00d7 RNA-seq (VST)",
+      "method": "spearman"
+    }
+  },
+  "notice": "All bundled examples are completely synthetic and are not derived from real participants.",
+  "schema_version": "1.0",
+  "seed": 20260917
+}

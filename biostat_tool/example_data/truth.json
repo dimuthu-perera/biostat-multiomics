@@ -1,0 +1,97 @@
+{
+  "n_samples": 80,
+  "pearson_spearman_teaching": {
+    "constant_features": [
+      "constant_a",
+      "constant_b"
+    ],
+    "linear_pair": [
+      "linear_signal",
+      "linear_partner"
+    ],
+    "missing_pair": [
+      "missing_driver",
+      "missing_partner"
+    ],
+    "monotonic_nonlinear_pair": [
+      "monotonic_driver",
+      "monotonic_nonlinear"
+    ],
+    "negative_linear_pair": [
+      "negative_driver",
+      "negative_partner"
+    ],
+    "note": "Synthetic pedagogic structure only; not a biological simulation.",
+    "null_pair": [
+      "null_a",
+      "null_b"
+    ],
+    "outlier_sensitive_pair": [
+      "outlier_driver",
+      "outlier_partner"
+    ],
+    "plot_presets": [
+      {
+        "description": "Tight positive linear association; Pearson and Spearman are both very high.",
+        "feature_a": "linear_signal",
+        "feature_b": "linear_partner",
+        "label": "Strong positive linear"
+      },
+      {
+        "description": "Tight negative linear association with both Pearson and Spearman strongly negative.",
+        "feature_a": "negative_driver",
+        "feature_b": "negative_partner",
+        "label": "Strong negative linear"
+      },
+      {
+        "description": "Curved monotonic relationship where Spearman is stronger than Pearson.",
+        "feature_a": "monotonic_driver",
+        "feature_b": "monotonic_nonlinear",
+        "label": "Monotonic nonlinear"
+      },
+      {
+        "description": "A strong monotonic trend with one extreme discordant point; Pearson is heavily attenuated while Spearman remains high.",
+        "feature_a": "outlier_driver",
+        "feature_b": "outlier_partner",
+        "label": "Outlier-sensitive"
+      },
+      {
+        "description": "Independent noise with no planted association.",
+        "feature_a": "null_a",
+        "feature_b": "null_b",
+        "label": "Null cloud"
+      },
+      {
+        "description": "Positive relationship with deterministic missing values so pairwise N is lower than the matched sample count.",
+        "feature_a": "missing_driver",
+        "feature_b": "missing_partner",
+        "label": "Missing pair"
+      }
+    ]
+  },
+  "planted_relationships": [
+    {
+      "feature_a": "Met_001",
+      "feature_b": "Gene_001",
+      "relationship": "shared latent linear positive"
+    },
+    {
+      "feature_a": "Met_002",
+      "feature_b": "Gene_002",
+      "relationship": "shared latent relationship"
+    },
+    {
+      "feature_a": "Met_001",
+      "feature_b": "Prot_001",
+      "relationship": "shared latent linear positive"
+    },
+    {
+      "feature_a": "Met_002",
+      "feature_b": "Prot_002",
+      "relationship": "shared latent relationship"
+    }
+  ],
+  "purpose": "Software demonstration and regression support; not a biological simulator.",
+  "schema_version": "1.0",
+  "seed": 20260917
+}

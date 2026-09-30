@@ -1,0 +1,28 @@
+{
+  "n_samples": 80,
+  "planted_relationships": [
+    {
+      "feature_a": "Met_001",
+      "feature_b": "Gene_001",
+      "relationship": "shared latent linear positive"
+    },
+    {
+      "feature_a": "Met_002",
+      "feature_b": "Gene_002",
+      "relationship": "shared latent relationship"
+    },
+    {
+      "feature_a": "Met_001",
+      "feature_b": "Prot_001",
+      "relationship": "shared latent linear positive"
+    },
+    {
+      "feature_a": "Met_002",
+      "feature_b": "Prot_002",
+      "relationship": "shared latent relationship"
+    }
+  ],
+  "purpose": "Software demonstration and regression support; not a biological simulator.",
+  "schema_version": "1.0",
+  "seed": 20260917
+}

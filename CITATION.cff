@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use Biostat Research Tool in research, please cite the software release used in your analysis."
+title: "Biostat Research Tool"
+type: software
+authors:
+  - name: "Biostat Research Tool contributors"
+version: "1.0.0"
+date-released: 2026-09-21
+license: MIT
+abstract: "Local-first reproducible biostatistics research software with a validated cross-omics Pearson/Spearman correlation module, explicit omics guardrails, AnalysisSpec provenance, and verified RunBundles."

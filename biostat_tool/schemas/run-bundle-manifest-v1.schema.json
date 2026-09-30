@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:biostat-research-tool:run-bundle-manifest:1.0",
+  "title": "Biostat Research Tool RunBundle Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundle_schema_version",
+    "bundle_type",
+    "status",
+    "created_utc",
+    "analysis_type",
+    "platform",
+    "oracle_engine",
+    "analysis",
+    "inputs",
+    "privacy",
+    "results",
+    "provenance",
+    "content"
+  ],
+  "properties": {
+    "bundle_schema_version": {
+      "const": "1.0"
+    },
+    "bundle_type": {
+      "const": "biostat_run"
+    },
+    "status": {
+      "const": "complete"
+    },
+    "created_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "analysis_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform": {
+      "$ref": "#/$defs/software"
+    },
+    "oracle_engine": {
+      "$ref": "#/$defs/software"
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_spec_sha256",
+        "effective_spec_sha256",
+        "run_fingerprint"
+      ],
+      "properties": {
+        "requested_spec_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "effective_spec_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "run_fingerprint": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_a",
+        "dataset_b"
+      ],
+      "properties": {
+        "dataset_a": {
+          "$ref": "#/$defs/inputIdentity"
+        },
+        "dataset_b": {
+          "$ref": "#/$defs/inputIdentity"
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_input_data_included",
+        "absolute_input_paths_recorded",
+        "input_identity_uses_sha256"
+      ],
+      "properties": {
+        "raw_input_data_included": {
+          "const": false
+        },
+        "absolute_input_paths_recorded": {
+          "const": false
+        },
+        "input_identity_uses_sha256": {
+          "const": true
+        }
+      }
+    },
+    "results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_table",
+        "schema",
+        "rows",
+        "testable_rows",
+        "method",
+        "fdr_family"
+      ],
+      "properties": {
+        "primary_table": {
+          "const": "results/correlations.csv"
+        },
+        "schema": {
+          "const": "results/schema.json"
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "testable_rows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "method": {
+          "enum": [
+            "pearson",
+            "spearman"
+          ]
+        },
+        "fdr_family": {
+          "type": "object"
+        }
+      }
+    },
+    "provenance": {
+      "const": "provenance.json"
+    },
+    "content": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/contentEntry"
+      }
+    },
+    "execution_backend": {
+      "$ref": "#/$defs/executionBackend"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "software": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "inputIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_path",
+        "sha256",
+        "bytes",
+        "orientation",
+        "data_type",
+        "preprocessing",
+        "included_in_bundle"
+      ],
+      "properties": {
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "orientation": {
+          "enum": [
+            "samples_rows",
+            "samples_columns"
+          ]
+        },
+        "data_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preprocessing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "included_in_bundle": {
+          "const": false
+        }
+      }
+    },
+    "contentEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "role",
+        "media_type",
+        "required",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "executionBackend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_backend",
+        "actual_backend",
+        "optimized_subset",
+        "fallback_reason",
+        "reference_verification"
+      ],
+      "properties": {
+        "requested_backend": {
+          "enum": [
+            "reference",
+            "optimized",
+            "auto"
+          ]
+        },
+        "actual_backend": {
+          "enum": [
+            "reference_scalar_v0.2.4",
+            "optimized_complete_pearson_v0.4.0",
+            "optimized_pearson_v0.4.1",
+            "optimized_spearman_v0.4.2"
+          ]
+        },
+        "optimized_subset": {
+          "enum": [
+            "complete_data_pearson_only",
+            "pearson_complete_or_reusable_pairwise_missing_masks",
+            "pearson_complete_or_reusable_pairwise_missing_masks_and_spearman_complete_data_prerank"
+          ]
+        },
+        "fallback_reason": {
+          "type": "string"
+        },
+        "reference_verification": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

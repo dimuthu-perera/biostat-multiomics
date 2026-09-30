@@ -1,0 +1,54 @@
+[
+  {
+    "feature_a": "a1",
+    "feature_b": "b1",
+    "method": "spearman",
+    "estimate": 1.0,
+    "p_value": 0.002777777777777778,
+    "q_value": 0.005555555555555556,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "spearman_exact_pairings_abs_tail",
+    "permutations": 720,
+    "extreme_count": 2
+  },
+  {
+    "feature_a": "a1",
+    "feature_b": "b2",
+    "method": "spearman",
+    "estimate": 0.9856107606091623,
+    "p_value": 0.005555555555555556,
+    "q_value": 0.005555555555555556,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "spearman_exact_pairings_abs_tail",
+    "permutations": 720,
+    "extreme_count": 4
+  },
+  {
+    "feature_a": "a2",
+    "feature_b": "b1",
+    "method": "spearman",
+    "estimate": -1.0,
+    "p_value": 0.002777777777777778,
+    "q_value": 0.005555555555555556,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "spearman_exact_pairings_abs_tail",
+    "permutations": 720,
+    "extreme_count": 2
+  },
+  {
+    "feature_a": "a2",
+    "feature_b": "b2",
+    "method": "spearman",
+    "estimate": -0.9856107606091623,
+    "p_value": 0.005555555555555556,
+    "q_value": 0.005555555555555556,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "spearman_exact_pairings_abs_tail",
+    "permutations": 720,
+    "extreme_count": 4
+  }
+]

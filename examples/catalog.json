@@ -1,0 +1,115 @@
+{
+  "examples": {
+    "16s_generic": {
+      "a": {
+        "data_type": "16s",
+        "details": "Synthetic strictly positive composition; no zero replacement required; CLR uses all 10 retained ASVs as the geometric-mean reference set.",
+        "file": "16s_clr.csv",
+        "preprocessing": "clr"
+      },
+      "b": {
+        "data_type": "generic",
+        "details": "Synthetic continuous biomarker measurements.",
+        "file": "generic_numeric.csv",
+        "preprocessing": "declared_numeric"
+      },
+      "description": "Synthetic 16S CLR coordinates paired with a generic quantitative biomarker panel.",
+      "design": "independent",
+      "label": "16S CLR \u00d7 Generic biomarkers",
+      "method": "spearman"
+    },
+    "metabolomics_metagenomics": {
+      "a": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "metagenomics",
+        "details": "Synthetic strictly positive composition; no zero replacement required; CLR uses all 12 retained species as the geometric-mean reference set.",
+        "file": "metagenomics_clr.csv",
+        "preprocessing": "clr"
+      },
+      "description": "Processed metabolomics paired with synthetic CLR coordinates derived from strictly positive compositions.",
+      "design": "independent",
+      "label": "Metabolomics \u00d7 Metagenomics (CLR)",
+      "method": "spearman"
+    },
+    "metabolomics_proteomics": {
+      "a": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "proteomics",
+        "details": "Synthetic processed quantitative protein abundances.",
+        "file": "proteomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "Processed quantitative metabolomics and proteomics with shared latent synthetic signals.",
+      "design": "independent",
+      "label": "Metabolomics \u00d7 Proteomics",
+      "method": "pearson"
+    },
+    "metabolomics_rnaseq": {
+      "a": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "b": {
+        "data_type": "rna_seq",
+        "details": "Synthetic continuous VST-like expression values; not raw counts.",
+        "file": "rnaseq_vst.csv",
+        "preprocessing": "vst"
+      },
+      "description": "Processed quantitative metabolomics paired with transformed RNA-seq expression; includes planted positive and negative cross-omics associations.",
+      "design": "independent",
+      "label": "Metabolomics \u00d7 RNA-seq (VST)",
+      "method": "spearman"
+    },
+    "microbiome_relative_blocked": {
+      "a": {
+        "data_type": "metagenomics",
+        "details": "Synthetic relative-abundance composition; intentionally blocked.",
+        "file": "guardrails/metagenomics_relative_abundance_BLOCKED.csv",
+        "preprocessing": "relative_abundance"
+      },
+      "b": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "Demonstrates the compositional-data guardrail for relative abundance input.",
+      "design": "independent",
+      "label": "Guardrail: metagenomics relative abundance (BLOCKED)",
+      "method": "spearman"
+    },
+    "rnaseq_raw_blocked": {
+      "a": {
+        "data_type": "rna_seq",
+        "details": "Synthetic raw integer counts; intentionally blocked.",
+        "file": "guardrails/rnaseq_raw_counts_BLOCKED.csv",
+        "preprocessing": "raw_counts"
+      },
+      "b": {
+        "data_type": "metabolomics",
+        "details": "Synthetic processed quantitative metabolomics values.",
+        "file": "metabolomics_quantitative.csv",
+        "preprocessing": "quantitative"
+      },
+      "description": "Demonstrates the raw-count guardrail. Dataset A is intentionally unsuitable for ordinary Pearson/Spearman correlation.",
+      "design": "independent",
+      "label": "Guardrail: raw RNA-seq counts (BLOCKED)",
+      "method": "spearman"
+    }
+  },
+  "notice": "All bundled examples are completely synthetic and are not derived from real participants.",
+  "schema_version": "1.0",
+  "seed": 20260917
+}

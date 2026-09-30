@@ -1,0 +1,54 @@
+[
+  {
+    "feature_a": "a1",
+    "feature_b": "b1",
+    "method": "pearson",
+    "estimate": 0.9999999999999999,
+    "p_value": 0.0,
+    "q_value": 0.0,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "scipy_pearsonr_beta_null_after_affine_stabilization",
+    "permutations": null,
+    "extreme_count": null
+  },
+  {
+    "feature_a": "a1",
+    "feature_b": "b2",
+    "method": "pearson",
+    "estimate": 0.9389529557231419,
+    "p_value": 0.005476359142223151,
+    "q_value": 0.005476359142223151,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "scipy_pearsonr_beta_null_after_affine_stabilization",
+    "permutations": null,
+    "extreme_count": null
+  },
+  {
+    "feature_a": "a2",
+    "feature_b": "b1",
+    "method": "pearson",
+    "estimate": -0.9999999999999999,
+    "p_value": 0.0,
+    "q_value": 0.0,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "scipy_pearsonr_beta_null_after_affine_stabilization",
+    "permutations": null,
+    "extreme_count": null
+  },
+  {
+    "feature_a": "a2",
+    "feature_b": "b2",
+    "method": "pearson",
+    "estimate": -0.9389529557231419,
+    "p_value": 0.005476359142223151,
+    "q_value": 0.005476359142223151,
+    "n_pairwise": 6,
+    "status": "ok",
+    "p_value_method": "scipy_pearsonr_beta_null_after_affine_stabilization",
+    "permutations": null,
+    "extreme_count": null
+  }
+]
